@@ -1,6 +1,15 @@
 <!doctype html>
 <html>
 <head>
+
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WS4S2SJ');</script>
+<!-- End Google Tag Manager -->
+
 <meta charset="UTF-8">
 <meta charset="windows-1252"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
@@ -14,213 +23,14 @@
 <!-- Folha de estilo Animate !-->
 <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <!-- Folha de estilo Animate !-->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-231498123-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-231498123-1');
-</script>
-<!-- Script de traqueamento !-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
-<script>
-$('a[href^="#"]').on('click', function(e) {
-    e.preventDefault();
-    var id = $(this).attr('href'),
-            targetOffset = $(id).offset().top;
-            
-    $('html, body').animate({ 
-        scrollTop: targetOffset - 100
-    }, 500);
-});
-    function parseQuery(qstr) {
-        var query = {};
-        var a = (qstr[0] === '?' ? qstr.substr(1) : qstr).split('&');
-        for (var i = 0; i < a.length; i++) {
-            var b = a[i].split('=');
-            query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
-        }
-        return query;
-    }
-
-    function encodeQuery(obj) {
-        var str = [];
-        for (var p in obj)
-            if (obj.hasOwnProperty(p)) {
-                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-            }
-        return str.join("&");
-    }
-
-    function addQueryParameterToDomain(key, value) {
-        var links = document.querySelectorAll('a[href].checkout'),
-            linksLength = links.length,
-            index,
-            queryIndex,
-            queryString,
-            query,
-            url,
-            domain,
-            colonSlashSlash;
-
-        for (index = 0; index < linksLength; ++index) {
-            url = links[index].href,
-                queryIndex = url.indexOf('?'),
-                colonSlashSlash = url.indexOf('://');
-
-            domain = url.substring(colonSlashSlash + 3);
-            domain = domain.substring(0, domain.indexOf('/'));
-
-            if (queryIndex === -1) {
-                url += '?' + key + '=' + value;
-            } else {
-                queryString = url.substring(queryIndex);
-                url = url.substring(0, queryIndex);
-                query = parseQuery(queryString);
-
-                query[key] = value;
-
-                url += '?' + encodeQuery(query);
-            }
-
-            links[index].href = url;
-        }
-    }
-
-    function addQuery(item) {
-        var arr = item.split('=');
-        if(arr[0] != null && arr[1] != undefined) {
-                addQueryParameterToDomain(arr[0], arr[1]);
-        }
-    }
-
-    jQuery(function() {
-        var url = window.location.search.replace("?", "");
-        var itens = url.split('&');
-        itens.forEach(addQuery);
-    });
-</script>
-
-<!-- Script de backredirect !-->
-<script>
-    (function(b) {
-        var a = {
-            version: "0.0.1",
-            history_api: typeof history.pushState !== "undefined",
-            init: function() {
-                b.location.hash = "#no-back";
-                a.configure();
-            },
-            hasChanged: function() {
-                if (b.location.hash == "#no-back") {
-                    b.location.hash = "#";
-                    if (b.location.search == null || b.location.search == undefined || b.location.search ==
-                        '') {
-                        b.location.href = “https://potencianatural.online/oferta/?src=back_home";
-                    } else {
-                        if (location.search.indexOf("src") > -1) {
-                            var partes = location.search.slice(1).split('&');
-                            var data = {};
-                            var new_search = '?';
-                            partes.forEach(function(parte) {
-                                var chaveValor = parte.split('=');
-                                var chave = chaveValor[0];
-                                var valor = chaveValor[1];
-                                data[chave] = valor;
-                            });
-                            data.src = data.src + "-->back_home";
-                            new_search += JSON.stringify(data).replace(/[{}"]/g, "").replace(/[:]/g, "=")
-                                .replace(/[,]/g, "&");
-    
-                            b.location.href = "https://potencianatural.online/oferta/" + new_search;
-                        } else {
-                            b.location.href = "https://potencianatural.online/oferta/" + b.location.search + "&src=back_home";
-                        }
-                    }
-                }
-            },
-            checkCompat: function() {
-                if (b.addEventListener) {
-                    b.addEventListener("hashchange", a.hasChanged, false);
-                } else {
-                    if (b.attachEvent) {
-                        b.attachEvent("onhashchange", a.hasChanged);
-                    } else {
-                        b.onhashchange = a.hasChanged;
-                    }
-                }
-            },
-            configure: function() {
-                if (b.location.hash == "#no-back") {
-                    if (this.history_api) {
-                        history.pushState(null, "", "#");
-                    } else {
-                        // b.location.hash = "#";
-                        if (b.location.search == null || b.location.search == undefined || b.location.search ==
-                            '') {
-                            b.location.href = "https://potencianatural.online/oferta/?src=back_home";
-                        } else {
-                            if (location.search.indexOf("src") > -1) {
-                                var partes = location.search.slice(1).split('&');
-                                var data = {};
-                                var new_search = '?';
-                                partes.forEach(function(parte) {
-                                    var chaveValor = parte.split('=');
-                                    var chave = chaveValor[0];
-                                    var valor = chaveValor[1];
-                                    data[chave] = valor;
-                                });
-                                data.src = data.src + "-->back_home";
-                                new_search += JSON.stringify(data).replace(/[{}"]/g, "").replace(/[:]/g, "=")
-                                    .replace(/[,]/g, "&");
-    
-                                b.location.href = "https://potencianatural.online/oferta/" + new_search;
-                            } else {
-                                b.location.href = "https://potencianatural.online/oferta/" + b.location.search + "&src=back_home";
-                            }
-                        }
-                    }
-                }
-                a.checkCompat();
-                a.hasChanged();
-            }
-        };
-        if (typeof define === "function" && define.amd) {
-            define(function() {
-                return a;
-            });
-        } else {
-            if (typeof module === "object" && module.exports) {
-                module.exports = a;
-            } else {
-                b.noback = a;
-            }
-        }
-        a.init();
-    }(window));
-</script>
-<!-- Back direct !-->
-<!-- Meta Pixel Code -->
-	<script>
-		!function(f,b,e,v,n,t,s)
-		{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-		n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-		if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-		n.queue=[];t=b.createElement(e);t.async=!0;
-		t.src=v;s=b.getElementsByTagName(e)[0];
-		s.parentNode.insertBefore(t,s)}(window, document,'script',
-		'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '292627533004750');
-		fbq('track', 'PageView');
-	</script>
-	<noscript><img height="1" width="1" style="display:none"
-	src="https://www.facebook.com/tr?id=292627533004750&ev=PageView&noscript=1"
-	/></noscript>
-<!-- End Meta Pixel Code -->
 
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WS4S2SJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 	
 <!-- Cabeçalho !-->
 <header>
@@ -255,8 +65,8 @@ $('a[href^="#"]').on('click', function(e) {
 	
 	<!-- Script Delay !-->
 	<script type="text/javascript">    
-	var tmin = 0; //troque o numeral pelos minutos de pitch e ; no final
-	var tseg = 5; //troque o numeral pelos segundos do pitch e ; no final
+	var tmin = 25; //troque o numeral pelos minutos de pitch e ; no final
+	var tseg = 0; //troque o numeral pelos segundos do pitch e ; no final
 
 	// ~ ATENÇÃO!!! NÃO MEXA EM NADA DAQUI PARA BAIXO! ~ //
 
@@ -295,19 +105,19 @@ $('a[href^="#"]').on('click', function(e) {
 				<h3>APROVEITE ESSA OFERTA POR TEMPO LIMITADO</h3>
 			</div>
 			
-			<!-- Oferta 12 potes !-->
+			<!-- Oferta 10 potes !-->
 			<div class="col-md-3 col-lg-3 col-sm-3">
 				<!-- Link da oferta -> Dentro da tag: href="link" !-->
-				<a href="https://ev.braip.com/campanhas/cpa/camx9l2po/?split=12" class="checkout" target="_blank">
+				<a href="https://ev.braip.com/campanhas/cpa/camx9lo9n/?split=12" class="checkout" target="_blank">
 					<img src="img/checkout3.webp" class="oferta-item img-fluid img-responsive">
 				</a>
 			</div>
-			<!-- Oferta 12 potes !-->
+			<!-- Oferta 10 potes !-->
 			
 			<!-- Oferta 5 potes !-->
 			<div class="col-md-3 col-lg-3 col-sm-3">
 				<!-- Link da oferta -> Dentro da tag: href="link" !-->
-				<a href="https://ev.braip.com/campanhas/cpa/camdn5vl8/?split=12" class="checkout" target="_blank">
+				<a href="https://ev.braip.com/campanhas/cpa/camdn59nz/?split=12" class="checkout" target="_blank">
 					<img src="img/checkout2.webp" class="oferta-item img-fluid img-responsive">
 				</a>
 			</div>
@@ -316,7 +126,7 @@ $('a[href^="#"]').on('click', function(e) {
 			<!-- Oferta 3 potes !-->
 			<div class="col-md-3 col-lg-3 col-sm-3">
 				<!-- Link da oferta -> Dentro da tag: href="link" !-->
-				<a href="https://ev.braip.com/campanhas/cpa/camzen2rx/?split=12" class="checkout" target="_blank">
+				<a href="https://ev.braip.com/campanhas/cpa/camzendey/?split=12" class="checkout" target="_blank">
 					<img src="img/checkout1.webp" class="oferta-item img-fluid img-responsive">
 				</a>
 			</div>
@@ -325,7 +135,7 @@ $('a[href^="#"]').on('click', function(e) {
 			<!-- Oferta 1 pote !-->
 			<div class="col-md-3 col-lg-3 col-sm-3">
 				<!-- Link da oferta -> Dentro da tag: href="link" !-->
-				<a href="https://ev.braip.com/campanhas/cpa/cam2x9vg1/?split=12" class="checkout" target="_blank">
+				<a href="https://ev.braip.com/campanhas/cpa/cam2x9dxv/?split=12" class="checkout" target="_blank">
 					<img src="img/checkout4.webp" class="oferta-item img-fluid img-responsive">
 				</a>
 			</div>
